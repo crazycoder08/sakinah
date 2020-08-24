@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-row id="back">
+    <ion-col col-12>
+      <button ion-button color="white" icon-only clear tappable (click)="backClick()">
+        <ion-icon name="ios-arrow-dropdown-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-list *ngIf="isPlaylist">
+    <ion-item *ngFor="let item of playlists" (click)="addToPlayList(item)">
+      <ion-avatar item-start>
+        <img [src]="item.playlistImage">
+      </ion-avatar>
+      <h2>{{item.palylistTitle}}</h2>
+      <p>Total tracks ({{item.totalTracks}})</p>
+    </ion-item>
+  </ion-list>
+  <div class="noRecordFound" *ngIf="isPlaylist && playlists.length === 0">
+    <h6>You haven't any playlist.</h6>
+  </div>
+  <ion-list *ngIf="!isPlaylist">
+    <ion-item *ngFor="let item of albums" (click)="addToPlayList(item)">
+      <ion-avatar item-start>
+        <img [src]="item.albumImage">
+      </ion-avatar>
+      <h2>{{item.albumTitle}}</h2>
+      <p>Total tracks ({{item.totalTracks}})</p>
+    </ion-item>
+  </ion-list>
+  <div class="noRecordFound" *ngIf="!isPlaylist && albums.length === 0">
+    <h6>You haven't any albums.</h6>
+  </div>
+</ion-content>

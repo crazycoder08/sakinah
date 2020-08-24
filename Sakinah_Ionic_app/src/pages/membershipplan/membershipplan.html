@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Membership Plan</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list class="accord animated fadeInUp" *ngFor="let plan of memberShipPlans;let i=index;">
+		<ion-list-header class="accordian" tappable (click)="toggle(i)" [ngClass]="{'item-active': plan.open, 'item': !plan.open}">
+			{{plan.planName}} 
+			<ion-icon item-right name="ios-arrow-forward" *ngIf="!plan.open"></ion-icon>
+			<ion-icon item-right name="ios-arrow-down" *ngIf="plan.open"></ion-icon>
+		</ion-list-header>
+		<!-- <ion-list [hidden]="!plan.open" class="accordList animated fadeIn" style="background-color: #d6d6d6 !important;">
+      
+              <p class="type" style="color: black;align-items: center;text-align: center;">{{plan.planName}}</p> 
+              <p class="price"  style="color: black;align-items: center;text-align: center;">Plan MRP:{{plan.planMRP}}$</p>
+              <p class="duration"  style="color: black;align-items: center;text-align: center;">Plan Validaity:{{plan.planValidity}}{{plan.planUnit}}</p>
+       
+      <ion-grid class="animated fadeInUp">
+        <ion-row justify-content-center >
+          <ion-col col-auto>
+            <button ion-button gradient round tappable (click)="paymentDailog(userData._id,userData.firstName,plan.planMRP,plan.planName)">Buy</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list> -->
+    
+    <ion-card [hidden]="!plan.open" class="accordList animated fadeIn">
+			<ion-card-header>
+				<ion-item>
+          <ion-label>
+						{{plan.planName}}
+					</ion-label>
+					<ion-badge item-end class="budget">Plan MRP:{{plan.planMRP}}$</ion-badge>
+				</ion-item>
+			</ion-card-header>
+			<ion-card-content>
+				<p>Plan Validaity:
+					<b>{{plan.planValidity}}{{plan.planUnit}}</b>
+				</p>
+				<ion-row justify-content-end>
+					<ion-col col-auto>
+						<button ion-button tappable (click)="paymentDailog(userData._id,userData.firstName,plan.planMRP,plan.planName)"> Buy</button>
+					</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+
+
+	</ion-list>
+</ion-content>

@@ -1,0 +1,130 @@
+page-music-player {
+	.content {
+		background-image: url(../assets/imgs/nature-scene-river-animated-gif-2.gif);
+		background-size: cover;
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
+        color: #ffffff;
+        background-color: map-get($map: $colors, $key: "app-bg");
+        .screen-center1 {
+          position: absolute;
+          left: 50%;
+          top: 90%;
+          width: calc(100% - 32px);
+          max-width: 400px;
+          transform: translate(-50%, -50%);
+        }
+		.scroll-content {
+			background: transparent;
+		}
+
+		#back.row {
+			position: absolute;
+		}
+
+		#mpgrid {
+			padding: 0;
+			padding-bottom: 66px;
+
+			&>div#imagecontainer {
+				align-self: center;
+				margin: 12% 0 5%;
+				background-size: cover;
+				background-position-x: center;
+				background-position-y: center;
+				height: 180px;
+				width: 180px;
+			}
+
+			#rgcontainer.row {
+				.range {
+					margin: 0 10px;
+					padding: 0 8px;
+
+					.range-knob {
+						display: block;
+					}
+				}
+
+				&>div {
+					margin-top: -15px;
+				}
+
+				#tright,
+				#tleft {
+					font-size: 1.3rem;
+					margin: -10px 0px 0px 0px;
+				}
+
+				#tright {
+					float: right;
+					padding-right: 18px;
+				}
+
+				#tleft {
+					float: left;
+					padding-left: 18px;
+				}
+			}
+
+			#dcontainer {
+				#title {
+					font-size: 2.0rem;
+					overflow: hidden;
+				}
+
+				#desc {
+					p {
+						font-size: 1.4rem;
+					}
+				}
+			}
+
+			#controlscontainer {
+				.col {
+					&#buffer {
+						min-height: 45px;
+						min-width: 65px;
+					}
+
+					button[disabled],
+					[ion-button][disabled] {
+						opacity: 1;
+					}
+
+					.button .icon {
+						font-size: 3.8rem;
+					}
+				}
+			}
+		}
+
+		#fpgrid {
+			position: fixed;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.row {
+			.col {
+				text-align: center;
+
+				.button {
+					.button-inner {
+						ion-icon {
+							font-size: 1.8em;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.range-ios .range-knob {
+	top: 14px;
+	width: 15px;
+	height: 15px;
+}
+

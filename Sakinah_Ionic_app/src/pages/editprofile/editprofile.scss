@@ -1,0 +1,39 @@
+page-editprofile {
+    ion-title.marginLeft {
+        margin-left: 10px;
+    }
+    .userDetail {
+        background: #124b7b;
+        display: block;
+    }
+    .custInfo.label {
+        color: #fff;
+    }
+    .bar-buttons-ios .bar-button {
+        font-size: 2.3rem !important;
+        margin-right: 10px !important;
+    }
+    .bar-buttons.bar-buttons-md .bar-button-md {
+        margin-right: 10px !important;
+    }
+    .col ion-avatar[text-center] img {
+        height: 100px !important;
+        width: 100px !important;
+        margin: 0 auto;
+    }
+    ion-avatar .button {
+        position: absolute;
+        bottom: 0;
+        height: 35px;
+        width: 35px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        left: 55%;
+        .icon {
+            font-size: 2.4rem;
+        }
+    }
+    form {
+        padding: 0 0 50px 0;
+	}
+}

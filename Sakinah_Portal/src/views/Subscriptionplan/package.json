@@ -1,0 +1,6 @@
+{
+  "name": "subscriptionplan",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./subscriptionplan.js"
+}

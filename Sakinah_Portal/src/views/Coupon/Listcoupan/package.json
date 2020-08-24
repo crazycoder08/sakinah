@@ -1,0 +1,6 @@
+{
+  "name": "listcoupon",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./listcoupon.js"
+}

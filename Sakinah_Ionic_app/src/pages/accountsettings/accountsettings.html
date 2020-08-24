@@ -1,0 +1,71 @@
+<ion-header class="animated fadeInDown">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Account Settings</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card class="animated fadeInUp">
+    <ion-card-header>Payment Gateway</ion-card-header>
+    <ion-card-content>
+      <form id="updatePaymentID" [formGroup]="paypalForm" (ngSubmit)="updatePaypalId(paypalForm.value)">
+        <ion-item>
+          <ion-label floating>Paypal email</ion-label>
+          <ion-input formControlName="paypalEmail" [(ngModel)]="paypalEmail" type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Stripe email</ion-label>
+          <ion-input formControlName="stripeEmail"  type="email"></ion-input>
+        </ion-item>
+        <br/>
+        <ion-row justify-content-end>
+          <ion-col col-auto>
+            <button ion-button round type="submit">Update</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="animated fadeInUp">
+    <ion-card-header>Change Password</ion-card-header>
+    <ion-card-content>
+      <form id="changePasswordForm" [formGroup]="changePasswordForm" (ngSubmit)="changePassword(changePasswordForm.value)">
+        <ion-item>
+          <ion-label floating>Current Password</ion-label>
+          <ion-input type="password" [(ngModel)]="oldPass" formControlName="oldPass"></ion-input>
+        </ion-item>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.oldPass.hasError('required') && changePasswordForm.controls.oldPass.touched">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, field old password is required</p>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.oldPass.hasError('minlength') && changePasswordForm.controls.oldPass.touched">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, minimum old password length is 6</p>
+        <ion-item>
+          <ion-label floating>New Password</ion-label>
+          <ion-input formControlName="newPass" [(ngModel)]="newPass" type="password"></ion-input>
+        </ion-item>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.newPass.hasError('required') && changePasswordForm.controls.newPass.touched">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, field new password is required</p>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.newPass.hasError('minlength') && changePasswordForm.controls.newPass.touched">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, minimum new password length is 6</p>
+        <ion-item>
+          <ion-label floating>Confirm Password</ion-label>
+          <ion-input formControlName="confirmPass" [(ngModel)]="confirmPass" type="password"></ion-input>
+        </ion-item>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.confirmPass.hasError('required') && changePasswordForm.controls.confirmPass.touched">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, field confirm password is required</p>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.confirmPass.hasError('minlength') && changePasswordForm.controls.confirmPass.touched">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, minimum confirm password length is 6</p>
+        <p class="errorMsg" *ngIf="changePasswordForm.controls.confirmPass.touched && changePasswordForm.hasError('mismatchedPasswords') && changePasswordForm.controls.confirmPass.valid">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Password does not match</p>
+        <br/>
+        <ion-row justify-content-end>
+          <ion-col col-auto>
+            <button ion-button round type="submit">Save Change</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

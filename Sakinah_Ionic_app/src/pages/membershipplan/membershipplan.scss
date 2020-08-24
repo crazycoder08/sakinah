@@ -1,0 +1,68 @@
+page-membershipplan {
+    ion-list.accord {
+        padding: 10px 10px 0px 10px;
+    }
+    .accord.list.list-ios {
+        margin-bottom: 10px;
+    }
+    .accordian {
+        background-color: #dedede !important;
+        margin-bottom: 0px !important;
+        align-items: center;
+        text-align: center;
+        font-size: 1.6rem;
+    }
+    .accordian .label,
+    .accordian ion-icon {
+        color: #124b7b !important;
+    }
+    .accordList {
+        border: 1px solid #fff;
+    }
+    .item>ion-icon,
+    .item-inner>ion-icon {
+        font-size: 1.4rem;
+        min-height: 1.4rem;
+    }
+    .card {
+		background: #fff;
+		border-radius: 7px !important;
+		margin: 0 !important;
+		width: 100%;
+		margin-bottom: 16px !important;
+		box-shadow: 1px 1px 25px 1px #ccc;
+
+		.card-header {
+			padding: 16px 0 0 0;
+
+			.item-inner .label {
+				color: #333333;
+				font-size: 2rem;
+				font-weight: 500;
+			}
+		}
+
+		.card-content {
+			background: #fff;
+
+			.col {
+				padding: 0 !important;
+
+				.button {
+					min-width: 125px;
+				}
+			}
+		}
+	}
+
+	.card .item {
+		background: transparent;
+	}
+
+	.budget {
+		color: #124b7b;
+		background: transparent;
+		margin: 0;
+		font-size: 2rem;
+	}
+}

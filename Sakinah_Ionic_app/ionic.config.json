@@ -1,0 +1,7 @@
+{
+  "name": "Sakinah",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

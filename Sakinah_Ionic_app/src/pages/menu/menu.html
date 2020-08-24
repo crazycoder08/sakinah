@@ -1,0 +1,34 @@
+<ion-split-pane when="sm">
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar id="menutoolbar">
+        <ion-item id="menuProfile" menuClose tappable (click)="goToUserProfile(userData._id)">
+          <ion-avatar item-start>
+            <img alt="" src='./assets/imgs/default-user.jpg' onerror="this.src='./assets/imgs/default-user.jpg'" />
+          </ion-avatar>
+          <h2>{{userData.firstName}} {{userData.lastName}}</h2>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list id="menulist">
+        <ion-item-group *ngIf="menus.length > 0">
+          <ion-item-divider color="light"></ion-item-divider>
+          <button menuClose ion-item *ngFor="let p of menus" tappable (click)="goToPage(p)">
+            <ion-icon class="menuicons" item-start *ngIf="p.class" [name]="p.class"></ion-icon>
+            {{p.name}}
+          </button>
+        </ion-item-group>
+
+        <ion-item-group>
+
+          <button menuClose ion-item tappable (click)="logoutClick()">
+            <ion-icon class="menuicons" item-start name="ios-log-out-outline"></ion-icon>Logout
+          </button>
+
+        </ion-item-group>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav [root]="rootPage" #content main swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

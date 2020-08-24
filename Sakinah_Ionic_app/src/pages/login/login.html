@@ -1,0 +1,165 @@
+
+<ion-content style=" background-image: url('assets/imgs/pic.gif');">
+  <ion-row id="back">
+    <ion-col col-12>
+       <button ion-button color="white" icon-only clear tappable (click)="backClick()" *ngIf="isSignup">
+        <ion-icon name="ios-arrow-dropleft-outline"></ion-icon>
+      </button> 
+    </ion-col>
+    <ion-col col-12>
+      <button ion-button color="white" icon-only clear tappable (click)="signuppage()" *ngIf="!isSignup">
+       <ion-icon name="ios-arrow-dropleft-outline"></ion-icon>
+     </button> 
+   </ion-col>
+    
+  </ion-row>
+  <div id="content" class="screen-center" padding [ngClass]="{'adjust': isSignup}">
+    <div text-center>
+      <img src="./assets/imgs/whitelogo.png" alt="" />
+    </div>
+    <div *ngIf="!isSignup" id="login">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-mail-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input formControlName="email" placeholder="Email" type="email"></ion-input>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Please enter Email</p>
+            <p class="errorMsg"
+              *ngIf="loginForm.controls.email.hasError('pattern') && loginForm.controls.email.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Invalid email</p>
+           
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-lock-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input formControlName="password" placeholder="Password" [type]="passwordType" clearOnEdit="false"></ion-input>
+              <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, field password is required</p>
+            <p class="errorMsg"
+              *ngIf="loginForm.controls.password.hasError('minlength') && loginForm.controls.password.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, minimum password length is 8</p>
+          </ion-col>
+        </ion-row>
+        <ion-row justify-content-center>
+          <button full item-center ion-button color="primary" round type="submit">Log In</button>
+        </ion-row>
+      </form>
+      <ion-row justify-content-end>
+        <div id="fp" (click)="forgotPassword()" style="color: white;">Forgot Password?</div>
+      </ion-row>
+    </div>
+    <div *ngIf="isSignup">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-person-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item id="fname">
+              <ion-input formControlName="firstName" placeholder="First name" type="text"></ion-input>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.firstName.hasError('required') && signupForm.controls.firstName.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Please enter first name</p>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.firstName.hasError('maxlength') && signupForm.controls.firstName.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Maximum first name length is 100</p>
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-person-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input formControlName="lastName" placeholder="Last name" type="text"></ion-input>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.lastName.hasError('required') && signupForm.controls.lastName.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Please enter last name</p>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.lastName.hasError('maxlength') && signupForm.controls.lastName.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Maximum last name length is 100</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-mail-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input formControlName="email" placeholder="Email" type="text"></ion-input>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.email.hasError('required') && signupForm.controls.email.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Please enter email</p>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.email.hasError('pattern') && signupForm.controls.email.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Invalid email</p>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.email.hasError('maxlength') && signupForm.controls.email.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Maximum email length is 100</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-call-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input formControlName="mobile" placeholder="Phone Number" type="Phone"></ion-input>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.mobile.hasError('required') && signupForm.controls.mobile.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Please enter phone number</p>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.mobile.hasError('maxlength') && signupForm.controls.mobile .touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Maximum first name length is 10</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon class="input-icon" name="ios-key-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input formControlName="password" placeholder="Password" [type]="passwordType1" ></ion-input>
+              <ion-icon item-end [name]="passwordIcon1" class="passwordIcon1" (click)='hideShowPassword1()'></ion-icon>
+            </ion-item>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.password.hasError('required') && signupForm.controls.password.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, field password is required</p>
+            <p class="errorMsg"
+              *ngIf="signupForm.controls.password.hasError('minlength') && signupForm.controls.password.touched">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Sorry, minimum password length is 6</p>
+          </ion-col>
+        </ion-row>
+        <ion-row justify-content-center>
+          <button full item-center ion-button color="primary" round type="submit">Sign Up</button>
+        </ion-row>
+      </form>
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-row justify-content-center>
+    <p>{{dontHaveAccount}}
+      <span tappable (click)="toggleContent()">{{btnText}}</span>
+    </p>
+  </ion-row>
+</ion-footer>

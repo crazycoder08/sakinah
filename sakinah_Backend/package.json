@@ -1,0 +1,33 @@
+{
+  "name": "multistoreappbackend",
+  "version": "1.0.0",
+  "description": "a system to serve single and multivendor application.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "npm test"
+  },
+  "author": "krishna",
+  "license": "ISC",
+  "dependencies": {
+    "ba64": "^3.0.9",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.0",
+    "fcm-node": "^1.5.2",
+    "formidable": "^1.2.2",
+    "googleapis": "^39.2.0",
+    "helmet": "^3.23.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.14",
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "stripe": "^8.68.0"
+  }
+}

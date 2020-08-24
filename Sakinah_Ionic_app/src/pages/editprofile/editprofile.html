@@ -1,0 +1,51 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title [ngClass]="{'marginLeft' : !enabledNavigation}">Profile</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only tappable (click)="updateProfile(profileForm)">
+				<ion-icon name="checkmark"></ion-icon>
+			</button>
+			<button ion-button icon-only tappable (click)="goBack()" *ngIf="!enabledNavigation">
+				<ion-icon name="log-out"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<!-- <ion-toolbar no-border-top no-padding min-41>
+		<div class="userDetail">
+			<ion-grid>
+				<ion-row text-center>
+					<ion-col>
+						<ion-avatar text-center>
+              <img alt="" class="profileImage" src='./assets/imgs/default-user.jpg' onerror="this.src='./assets/imgs/default-user.jpg'" />
+              <button tappable (click)="uploadImage()" class="button">
+                
+								<ion-icon name="camera"></ion-icon>
+							</button>
+						</ion-avatar>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+	</ion-toolbar> -->
+	<div padding>
+		<form id="profileForm" #profileForm="ngForm" name="profile">
+			<ion-item>
+				<ion-label floating>First Name</ion-label>
+				<ion-input type="text" [(ngModel)]="userData.firstName" name="firstName" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Last Name</ion-label>
+				<ion-input type="text" [(ngModel)]="userData.lastName" name="lastName" required></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Contact</ion-label>
+				<ion-input type="number" [(ngModel)]="userData.mobile" name="mobile" required></ion-input>
+			</ion-item>
+		</form>
+	</div>
+</ion-content>

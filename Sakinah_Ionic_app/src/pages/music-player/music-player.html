@@ -1,0 +1,75 @@
+<ion-content >
+  <div id="fixedbg" style=" background-image: url('assets/imgs/nature-scene-river-animated-gif-2');"></div>
+  <ion-row id="back">
+    <ion-col col-12>
+      <button ion-button color="white" icon-only clear tappable (click)="backClick()">
+        <ion-icon name="ios-arrow-dropdown-outline"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-grid id="mpgrid" class="screen-center1">
+    <!-- <div id="imagecontainer" [style.background-image]="'url('+ params.songDetail.trackImage +')'">
+    </div> -->
+    <ion-row id="rgcontainer">
+      <ion-col>
+        <ion-range step="1" item-start min="0" [max]="params.duration" [(ngModel)]="params.position" (ionChange)="seekTo($event)"></ion-range>
+        <div id="timespans">
+          <span id="tleft">{{currentTime}}</span>
+          <span id="tright">{{totalTime}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row id="dcontainer" text-center>
+      <ion-col col-12>
+        <div id="title" (click)="viewTrackDetail(params.songDetail)">{{params.songDetail.title}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row id="controlscontainer" justify-content-center>
+      <ion-col col-auto>
+        <button ion-button color="white" icon-only clear tappable (click)="previousClick()" [disabled]="params.isBuffering">
+          <ion-icon name="ios-skip-backward"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col *ngIf="!params.isBuffering" col-auto>
+        <button ion-button color="white" icon-only clear tappable (click)="togglePause()">
+          <ion-icon [name]="(params.isPlaying ? 'ios-pause' : 'ios-play')"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col id="buffer" *ngIf="params.isBuffering" col-auto align-self-center text-center>
+        <ion-spinner name="crescent"></ion-spinner>
+      </ion-col>
+      <ion-col col-auto>
+        <button ion-button color="white" icon-only clear tappable (click)="nextClick()" [disabled]="params.isBuffering">
+          <ion-icon name="ios-skip-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+ </ion-grid>
+   <!-- <ion-grid id="fpgrid">
+    <ion-row>
+      <ion-col col-3>
+        <button ion-button color="white" icon-left clear (click)="likeUnlikeClick()">
+          <ion-icon [ngClass]="{'likedIcon':extraDetails.statusLike}" [name]="(extraDetails.statusLike ? 'ios-heart' :'ios-heart-outline')"></ion-icon>
+          {{extraDetails.trackTotalLikes}}
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button color="white" icon-left clear>
+          <ion-icon name="ios-play-outline"></ion-icon>
+          {{extraDetails.trackTotalPlays}}
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button color="white" icon-left clear (click)="repostUnpostClick()">
+          <ion-icon [ngClass]="{'likedIcon':extraDetails.statusRepost}" name="ios-sync-outline"></ion-icon>
+          {{extraDetails.repostCount}}
+        </button>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button color="white" icon-only clear tappable (click)="presentPopover($event)">
+          <ion-icon name="md-more"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+</ion-content>

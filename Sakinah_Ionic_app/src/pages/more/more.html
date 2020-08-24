@@ -1,0 +1,59 @@
+<ion-header>
+<ion-navbar>
+  <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>More</ion-title>    
+</ion-navbar>
+</ion-header>
+<ion-content>
+  <div>
+    <ion-refresher (ionRefresh)="loadMore($event, true)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="crescent">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list id="albums">
+        <ion-item class="animated fadeInUp" *ngFor="let item of playlistsFeeds" (click)="playSelectedSong($event, item)">
+            <h3>{{ item.title }}</h3>
+            <ion-icon item-end style="color: #ff5412;"  [name]="((config.nowPlaying === item._id && config.isPlaying) ? 'ios-pause' : 'ios-play')"></ion-icon>
+            
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="loadMore($event, false)">
+        <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</div>
+<div class="noRecordFound animated fadeInUp" *ngIf="playlistsFeeds.length === 0">
+  <h6 style="text-align: center;" *ngIf="playlistsFeeds.length === 0">No any Song List found.</h6>
+</div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col style="padding: 0;" *ngFor="let mood of moodList;let i=index;">
+        <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event.value)" *ngIf='i<3'>
+          <ion-segment-button [value]="mood._id" (click)="selectedItem(mood._id,i);">
+            {{mood.moodName}}
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+      <ion-segment [(ngModel)]="selectedSegment">
+        <ion-segment-button value="more">
+          More
+        </ion-segment-button>
+      </ion-segment>
+
+    </ion-row>
+
+    <!-- <ion-segment [(ngModel)]="reviews" (ionChange)="segmentChanged($event.value)">
+      <ion-segment-button *ngFor="let mood of moodList;let i=index;"  [value]="mood.moodName">
+        <div *ngIf='i<4' >
+          {{mood.moodName}}
+        </div>
+      </ion-segment-button> 
+       <ion-segment-button value="more">
+        More
+      </ion-segment-button>
+    </ion-segment> -->
+  </ion-toolbar>
+</ion-footer>
